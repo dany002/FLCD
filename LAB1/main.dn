@@ -1,24 +1,33 @@
-func p1(x):
-	IF x % 2 == 0:
+Legend: ==  <=>  ==$
+				return  <=>  RET
+				if  <=>  IF
+				>  <=> 	>$
+				<  <=>  <$
+				for  <=>  FOR
+				(  <=> <
+				)  <=> >
+
+func p1<x>:
+	IF <x % 2 ==$ 0> THEN:
 		RET 1
 	RET 0
 
 func p2(n):
-	FOR i in ran(2,n/2):
-		IF n % i == 0:
+	FOR i in ran <2,n/2>:
+		IF <n % i ==$ 0> THEN:
 			RET 1
 	RET 0
 
-func p3(n):
+func p3<n>:
 	s = 0
-	FOR i in ran(n):
+	FOR i in ran <n>:
 		s += i
 	RET s
 
-func p1err(a,b,c):
+func p1err<a,b,c>:
 	d == 7
-	IF a >> b && a > c:
+	IF < a >$ b && a >$ c > THEN:
 		RETurn a
-	IF b > c && b > a:
+	IF < b >$ c && b >$ a > THEN:
 		RET b
 	RET c
