@@ -1,0 +1,24 @@
+func p1(x):
+	IF x % 2 == 0:
+		RET 1
+	RET 0
+
+func p2(n):
+	FOR i in ran(2,n/2):
+		IF n % i == 0:
+			RET 1
+	RET 0
+
+func p3(n):
+	s = 0
+	FOR i in ran(n):
+		s += i
+	RET s
+
+func p1err(a,b,c):
+	d == 7
+	IF a >> b && a > c:
+		RETurn a
+	IF b > c && b > a:
+		RET b
+	RET c
