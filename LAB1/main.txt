@@ -1,11 +1,3 @@
-Legend: ==  <=>  ==$
-				return  <=>  RET
-				if  <=>  IF
-				>  <=> 	>$
-				<  <=>  <$
-				for  <=>  FOR
-				(  <=> <
-				)  <=> >
 
 p1:
 int x;
@@ -29,10 +21,10 @@ for (i $= 2; i -le x/2; i $= i+1){
 }
 
 if(ok -eq true){
-	write "Prim";
+	write (Prim);
 }
 else{
-	write "Nu e prim";
+	write (Nu e prim);
 }
 
 
@@ -56,15 +48,15 @@ a $= 10;
 b = 7;
 c $= 15;
 if (a -gt b && b -gt c){
-	write "A is the maximum"
+	write (A is the maximum)
 	ret;
 }
 if (b -gt a && b -gt c){
-	write "B is the maximum"
+	write (B is the maximum)
 	ret;
 }
 
 if (c -gt a && c -gt b){
-	write "C is the maximum"
+	write (C is the maximum)
 	ret;
 }

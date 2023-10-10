@@ -28,13 +28,17 @@ iostmt ::= "read" | "write" "(" IDENTIFIER ")"
 
 structstmt ::= cmpdstmt | ifstmt | whilestmt | forstmt
 
-ifstmt ::= "if" condition stmtlist ["else" stmtlist]
+ifstmt ::= "if" conditionstmt stmtlist ["else" stmtlist]
 
-whilestmt ::= "while" condition stmtlist
+whilestmt ::= "while" conditionstmt stmtlist
+
+conditionstmt ::= "condition" "logicOperator" "condition" | condition
+
+logicOperator ::= "&&" | "||"
 
 condition ::= expression RELATION expression
 
-forstmt ::= "for" assignstmt condition assignstmt stmtlist
+forstmt ::= "for" assignstmt conditionstmt assignstmt stmtlist
 
 RELATION ::= "-lt" | "-le" | "-eq" | "-ne" | "-ge" | "-gt"
 
