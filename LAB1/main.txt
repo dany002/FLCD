@@ -1,14 +1,16 @@
 
 p1:
+BEGIN
 int x;
 x $= 7;
 if (x % 2 -eq 0){
 	ret 1;
 }
 ret 0;
-
+END
 
 p2
+BEGIN
 int x;
 int i;
 bool ok;
@@ -26,9 +28,11 @@ if(ok -eq true){
 else{
 	write (Nu e prim);
 }
+END
 
 
 p3
+BEGIN
 int s;
 int i;
 int n;
@@ -38,9 +42,11 @@ for (i $= 1; i -le n; i $= i+1){
 	s $= s + i;
 }
 write s;
+END
 
 
 p1err
+BEGIN
 int a;
 int b;
 int c
@@ -60,3 +66,4 @@ if (c -gt a && c -gt b){
 	write (C is the maximum)
 	ret;
 }
+END

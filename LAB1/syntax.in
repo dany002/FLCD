@@ -1,3 +1,5 @@
+program ::= "BEGIN" decllist ";" cmpdstmt "END"
+
 decllist ::= declaration | declaration ";" decllist
 
 declaration ::= IDENTIFIER ":" type
