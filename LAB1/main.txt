@@ -55,16 +55,16 @@ int c
 a $= 10;
 b = 7;
 c $= 15;
-if (a -g b && b -g c){
+if (a -gt b && b -gt c){
 	write "A is the maximum"
 	ret;
 }
-if (b -g a && b -g c){
+if (b -gt a && b -gt c){
 	write "B is the maximum"
 	ret;
 }
 
-if (c -g a && c -g b){
+if (c -gt a && c -gt b){
 	write "C is the maximum"
 	ret;
 }

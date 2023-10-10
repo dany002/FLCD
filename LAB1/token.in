@@ -11,8 +11,6 @@ OF
 }
 ;
 $=
-+
-*
 (
 )
 read
@@ -21,12 +19,12 @@ if
 else
 while
 for
--l
+-lt
 -le
--e
+-eq
 -ne
 -ge
--g
+-gt
 +
 -
 *
@@ -36,6 +34,9 @@ for
 =
 >=
 %
+&&
+||
+-
 true
 false
 auto

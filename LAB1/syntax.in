@@ -36,6 +36,6 @@ condition ::= expression RELATION expression
 
 forstmt ::= "for" assignstmt condition assignstmt stmtlist
 
-RELATION ::= "-l" | "-le" | "-e" | "-ne" | "-ge" | "-g"
+RELATION ::= "-lt" | "-le" | "-eq" | "-ne" | "-ge" | "-gt"
 
 retstmt ::= "ret" expression | "ret" ";"

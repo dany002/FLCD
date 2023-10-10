@@ -10,7 +10,7 @@ c. Decimal digits (0-9);
 Lexic:
 a.Special symbols, representing:
 
-  - operators + - * / < <= >= %
+  - operators + - * / < <= >= % && || 
 
   - separators [ ] { }  : ; space
 
