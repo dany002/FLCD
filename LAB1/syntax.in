@@ -2,7 +2,7 @@ program ::= "BEGIN" decllist ";" cmpdstmt "END"
 
 decllist ::= declaration | declaration ";" decllist
 
-declaration ::= IDENTIFIER ":" type
+declaration ::= type IDENTIFIER
 
 type1 ::= "bool" | "char" | "int"
 
