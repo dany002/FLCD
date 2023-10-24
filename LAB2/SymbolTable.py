@@ -1,3 +1,5 @@
+import unittest.case
+
 class HashTableSymbolTable:
     def __init__(self, size=100):
         self.size = size
@@ -20,12 +22,30 @@ class HashTableSymbolTable:
                     return v
         return None
 
-    def delete(self, key):
-        index = self._hash(key)
-        if self.table[index] is not None:
-            for item in self.table[index]:
-                if item[0] == key:
-                    self.table[index].remove(item)
 
     def display(self):
         return self.table
+
+
+class TestHashTableSymbolTable(unittest.TestCase):
+    def test_insert_and_lookup(self):
+        table = HashTableSymbolTable()
+        table.insert(1, 15)
+        table.insert(17, 13)
+        self.assertEqual(table.lookup(1), 15)
+        self.assertEqual(table.lookup(17), 13)
+
+    def test_insert_overwrite(self):
+        table = HashTableSymbolTable()
+        table.insert(1, 15)
+        table.insert(1, 13)
+        self.assertEqual(table.lookup(1), 15)
+
+    def test_lookup_nonexistent_key(self):
+        table = HashTableSymbolTable()
+        self.assertIsNone(table.lookup(31))
+
+
+if __name__ == '__main__':
+    unittest.main()
+
