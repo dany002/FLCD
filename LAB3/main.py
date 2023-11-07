@@ -169,5 +169,5 @@ class ScannerException(Exception):
 if __name__ == '__main__':
     scanner = Scanner()
     scanner.read_tokens()
-    program_filename = "p1err"  # options: p1, p2, p3 and p1err
+    program_filename = "p1"  # options: p1, p2, p3 and p1err
     scanner.scan(program_filename)
