@@ -1,3 +1,4 @@
+from ParserOutput import ParserOutput
 from configuration import Configuration
 
 
@@ -9,6 +10,7 @@ class Parser:
         self.another_try_index = 0
         self.file_name = grammar.file_name.replace('.txt', '') + "_out.txt"
         self.file = open(self.file_name, "w")
+        self.parser_output = ParserOutput()
         # s = state of the parsing (q, b, f, e)
 
     def get_head(self):
@@ -62,6 +64,7 @@ class Parser:
 
     def expand(self):
         # When the head of the input stack is a nonterminal
+        self.parser_output.add_to_tree("expand |-- ")
         self.file.write("expand |-- ")
         if self.get_head() is None:
             self.file.write(self.config.b)
@@ -80,9 +83,11 @@ class Parser:
             self.config.b = self.get_remaining()
         else:
             self.config.b = prod + ' ' + self.get_remaining()
+        self.parser_output.add_to_tree(str(self.config) + '\n')
         self.file.write(str(self.config) + '\n')
 
     def advance(self):
+        self.parser_output.add_to_tree("advance |-- ")
         self.file.write("advance |-- ")
         if self.get_head() is None:
             return
@@ -95,13 +100,17 @@ class Parser:
 
         self.config.i += 1
         self.file.write(str(self.config) + '\n')
+        self.parser_output.add_to_tree(str(self.config) + '\n')
 
     def mom_insuccess(self):
+        self.parser_output.add_to_tree("mom ins |-- ")
         self.file.write("mom ins |-- ")
         self.config.s = 'b'
         self.file.write(str(self.config) + '\n')
+        self.parser_output.add_to_tree(str(self.config) + '\n')
 
     def back(self):
+        self.parser_output.add_to_tree("back |-- ")
         self.file.write("back |-- ")
         if self.get_head_a() is None:
             return
@@ -114,13 +123,14 @@ class Parser:
 
         self.config.i -= 1
         self.file.write(str(self.config) + '\n')
+        self.parser_output.add_to_tree(str(self.config) + '\n')
 
     def another_try(self):
 
         if self.config.i == 1 and len(self.config.a) == 0:
             self.config.s = 'e'
             return
-
+        self.parser_output.add_to_tree("ant try |-- ")
         self.file.write("ant try |-- ")
         index = int(self.get_head_a())
 
@@ -143,17 +153,21 @@ class Parser:
             self.config.s = 'q'
 
         self.file.write(str(self.config) + '\n')
+        self.parser_output.add_to_tree(str(self.config) + '\n')
 
     def success(self):
+        self.parser_output.add_to_tree("success |-- ")
         self.file.write("success |-- ")
         self.config.s = 'f'
         self.file.write(str(self.config) + '\n')
+        self.parser_output.add_to_tree(str(self.config) + '\n')
 
     def algorithm(self, sequence):
         n = len(sequence.split(' '))
         self.config = Configuration('q', 1, 'epsilon', 'S')
         self.file = open(self.file_name, "a")
         self.file.write(str(self.config) + '\n')
+        self.parser_output.add_to_tree(str(self.config) + '\n')
         while self.config.s != 'f' and self.config.s != 'e':
             if self.config.s == 'q':
                 if self.config.i == n + 1 and len(self.config.b) == 0:
@@ -180,7 +194,7 @@ class Parser:
         else:
             return self.build_string_of_productions()
 
-
+# 8.5 9.5 6 8 8 9.5 9.5 10 10 10
     def build_string_of_productions(self):
         items = self.config.a.split(' ')
         length = len(items)
@@ -199,6 +213,7 @@ class Parser:
         if string_of_prod != '':
             self.file.write("Sequence accepted\n")
             self.file.write("String of productions: ")
+            self.parser_output.add_to_tree("String of productions: " + string_of_prod)
             self.file.write(string_of_prod)
             self.file.close()
         else:
