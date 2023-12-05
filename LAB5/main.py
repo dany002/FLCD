@@ -4,7 +4,7 @@ from parser import Parser
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
-
+    # Read grammar from a file
     grammar1 = Grammar("grammar1.txt")
     grammar2 = Grammar("grammar2.txt")
 
